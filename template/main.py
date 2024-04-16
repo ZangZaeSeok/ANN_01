@@ -39,7 +39,7 @@ def train(model, trn_loader, device, criterion, optimizer, augmentation=0):
                 loss.backward()
 
                 optimizer.step()
-
+                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.)
                 total_loss += loss.item()
 
                 _, predicted = outputs.max(1)
